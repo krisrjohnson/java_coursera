@@ -1,0 +1,210 @@
+bits are 0 or 1 (duh)
+abstraction - aka you don't program in bits, things are abstracted out, as in a string "hello" is an abstraction of ascii characters
+
+7 step programming
+
+variables
+
+// http://www.dukelearntoprogram.com/course1/example/index.php
+// fn lookups http://www.dukelearntoprogram.com/course1/doc/
+//javascript variables
+	var x = 3;
+	var y = 4;
+	y = x;
+	print(x, y); // 3,3
+
+// images and methods
+	var image = new SimpleImage("chapel.png"); // in dltp 
+	print(image); // prints a pic of duke's chapel, yay
+
+	print(image.getHeight(), image.getWidth());
+
+	var pixel = image.getPixel(0,300);
+	print(pixel.getRed()); // getBlue(), getGreen(); getPixel returns all 3
+
+// functions
+	function square(x) {
+	    var ans = x*x;
+	    return ans;
+	}
+
+	var y = square(4);
+	print(y);
+
+	function triSum(x,y,z) {
+	    var ans = x + y + z;
+	    return ans;
+	}
+	print(triSum(4,5,6));
+
+	function stringCat(a,b) {
+	    ans = a + b;
+	    return ans;
+	}
+	print(stringCat("alpha", " and omega"));
+
+	function imageDimensions(image){
+	    var height = image.getHeight();
+	    var width = image.getWidth();
+	    print("width: " + width + " height: " + height);
+	}
+
+	var image = new SimpleImage("chapel.png");
+	imageDimensions(image);
+
+// for loop
+	var image = new SimpleImage(200,200);
+
+	for (var pixel of image.values()) {
+	    pixel.setRed(255);
+	    pixel.setGreen(0);
+	    pixel.setBlue(255);
+	}
+
+	print(image);
+
+// conditionals
+	var image = new SimpleImage("chapel.png");
+
+	for (var pixel of image.values()) {
+	    if (pixel.getX() < (image.getWidth() / 3)) {
+	        pixel.setRed(255);
+	    } if (pixel.getX() > image.getWidth()/3 && 
+	            (pixel.getX() < image.getWidth()*2/3)) {
+	        pixel.setGreen(255);
+	    } if (pixel.getX() > image.getWidth() * 2/3) {
+	        pixel.setBlue(255);
+	    }
+	    
+	}
+
+	print(image);
+
+
+	// swap red and green pixel values
+		function swapRedGreen(image) {
+	    for (var pixel of image.values()) {
+	        var oldR = pixel.getRed();
+	        pixel.setRed(pixel.getGreen());
+	        pixel.setGreen(oldR);
+	    }
+	}
+
+	var image = new SimpleImage("chapel.png");
+
+	swapRedGreen(image);
+
+	print(image);
+
+	// swap only blue pixels to yellow
+		// assignment claimed RGB of devil is (0,51,227), img provided is actually (1,46,223)
+	function swapBlueToYellow(image) {
+	    for (var pixel of image.values()) {
+	        if (pixel.getRed() == 1
+	            && pixel.getGreen() == 46
+	            && pixel.getBlue() == 223) {
+	            pixel.setRed(255);
+	            pixel.setGreen(255);
+	            pixel.setBlue(0);
+	        }
+	    }
+	}
+
+	var image = new SimpleImage("duke_blue_devil.png");
+
+	swapBlueToYellow(image);
+
+	print(image);
+
+
+// practice quiz //
+1) create var x and assign to value of x coord of pixel:
+var x = pixel.getX();
+
+2) var x =2; x = x*3; what is x
+6
+
+3) var x = 3; print("x"); what is output
+x // the string
+
+4) method call?
+px.setRed(200);
+var w = img.getWidth();
+
+5) var i1 = new SimpleImage(name); var i2 = new SimpleImage(name2); i1.getHeight()?
+height of i1
+
+6) correct loop for red, green, blue stripe exercise
+red < w/3, w/3 < green < 2*w/3, 2*w/3 < blue < w
+
+7) swapRedGreen fn
+above
+
+8) duke blue devil swap fn is turning everything yellow, what's possibly the problem
+They've swapped all blue > 220 to yellow, forgetting white has blue==255
+
+
+
+// implementing green screen album
+	// if a pixel is green screen (high green value), swap w/ pixel from 2nd img
+	function greenScreenSwap(imageOne, imageTwo) {
+	    for (var pixel of image.values()) {
+	        if (pixel.getRed() <= 40 &&
+	            pixel.getGreen() > 200 && 
+	            pixel.getBlue() <= 40)
+	            imageOne.setPixel(pixel.getX(), pixel.getY(),
+	                imageTwo.getPixel(pixel.getX(), pixel.getY()));
+	    }
+	}
+
+	var image = new SimpleImage("drewRobert.png");
+	var imageTwo = new SimpleImage("dinos.png")
+
+	greenScreenSwap(image, imageTwo);
+
+	print(image);
+
+
+// fixing bug
+	var img = new SimpleImage(200,200);
+	for (var px of img.values()){
+	  var x = px.getX();
+	  var y = px.getY();
+	  if (x < img.getWidth()/2){
+	    px.setRed(255);
+	  }
+	  if (y>img.getHeight()/2){
+	    px.setBlue(255);
+	  }
+	  if (!(x < img.getWidth()/2) && !(y > img.getHeight()/2)) {
+	    px.setGreen(255);
+	  }
+	}
+	print (img);
+
+
+// set border to black, allowing for any size border
+	function setBlack(pixel) {
+	    pixel.setRed(0);
+	    pixel.setGreen(0);
+	    pixel.setBlue(0);
+	}
+
+	function addBorder(image, thickness) {
+	    for (var pixel of image.values()) {
+	        if ((pixel.getX() < thickness || pixel.getX() > image.getWidth() - thickness) ||
+	            (pixel.getY() < thickness || pixel.getY() > image.getHeight() - thickness)) {
+	            setBlack(pixel);
+	        }
+	    }
+	}
+
+	var image = new SimpleImage("chapel.png");
+
+
+	addBorder(image, 10);
+	print(image);
+
+	addBorder(image, 20);
+	print(image);
+

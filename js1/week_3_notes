@@ -1,0 +1,52 @@
+// interactive web pages
+http://www.w3schools.com/html/html_css.asp
+
+// code pen page w/ button
+html:
+
+	<h1> Change Things I</h1>
+	<div id="d1">
+	  div 1 section
+	</div>
+	<div id="d2">
+	  Div2 is right here, we not going anywhere
+	</div>
+	<input type="button" value="change" onclick="dochange()">
+
+	<input type="button" value="confirm btn" onclick="doconfirm()">
+
+CSS
+	div {
+	  width: 200px;
+	  font-size: 28px;
+	}
+	#d1 {
+	  background-color: lightblue;
+	  font-family:Times;
+	  margin-left: 20px;
+	}
+	#d2 {
+	  background-color: yellow;
+	  font-family:"arial";
+	  border:double ;
+	  border-color: green;
+	  width: 600px;
+	}
+
+JS
+	function dochange() {
+	  alert('my alert message');
+	}
+	function doconfirm() {
+	  var userInput = confirm('do you confirm');
+	  if (userInput) {
+	      var message = "You pressed OK!";
+	      }
+	  else {
+	    var message = "Are you sure you want to cancel?";
+	  }
+	  alert(message);
+	}
+
+// Changing pages interactively 
+	// basic idea of how JS and html interact

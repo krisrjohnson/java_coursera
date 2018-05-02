@@ -1,0 +1,57 @@
+// week 1 notes
+
+// Useful shortcuts
+annuity - finite stream of cash flows of identical magnitude and equal spacing in time (frequency)
+	always a year for annuities
+
+	real life examples: insurance annuities, home mortgage, auto lease, bond payments
+
+	PV of cash flows:
+		brute force: take each cash flow and discount back to today
+		each CF/(1+R)^T
+PV of Annuity: CF/R(1-(1+R)^-T)
+		first payment is 1 year from today (if there's a CF on T=0, add CF to above)
+
+	Ex 1: how much saved today allows $100 withdrawals every year for 20 years w/ R=5%
+		PV = 100/.05 * (1-(1.05)^-20) = 1246.22
+
+Growing annuity: finite stream of CFs grow at constant rate, evenly spaced through time (yearly)
+	e.g. income streams, savings strategies, project revenue/expense streams
+
+	PV growing annuity = CF / (R-g) (1 - ((1+R)/(1+g))^-T)
+
+	Ex 2: same as Ex1 w/ growth = 2.5%
+	PV = 100 / (.05-.025) * (1 - (1.05/1.025)^-20) = 1529.69
+
+Perpetuity: annuity forever
+	e.g. perpetuities, consul bonds (UK)
+
+	PV = CF/R
+
+	Ex 3: withdraw 100 each year starting next year and on to forever, can earn 5% per annum
+		PV = 100 / .05 = 2000
+
+Growth Perpetuity: growing annuity forever
+	e.g. dividend streams (an approximation, no corp lasts forever)
+
+	PV = CF / (R-G) 
+	Ex 4: Ex3 w/ growth of 2.5%
+		PV = 100 / (.05-.025) = 4000
+
+Tips / trickiness to watch out for:
+	where is T0 and how long does it go on for? 
+		Annuity for 20 years can be phrased as payment next year that goes on for 19 more years
+
+
+// Taxes
+
+	Ex 1: save today to withdraw 100 each of next four years, can earn 5% annum
+		CF = 100, R = .05
+		this is an annuity of 4 years
+		PV = 100 / .05 * (1-(1.05)^-4) = 354.60
+	Ex 2: taxes = 35%, want 100 each year
+		Rt = R * (1-t) 
+			= .05 * (1-.35) = .0325
+		PV = 100 / .0325 * (1-(1.0325)^-4) = 369.50
+
+

@@ -1,0 +1,60 @@
+// Week 1 notes
+
+/* Git Version Control */
+
+complete history, tracked and available
+supports many workflows, collab, quality thru team comm and reviews
+manages small changes, easy to test and fix small changes
+
+Content - version control systems don't care, best at text based
+	source code, automated tests, server config, documentation, books, websites
+
+DVCS - distributed version control
+	each user has a local repo
+	git is a dvcs
+
+/* command line */
+Terminal
+
+git --version
+	to check
+
+git status
+git status --short
+git add file.txt
+
+git help init 
+	or other command (git help status, etc)
+git help #
+
+git config --global user.name "Kris"
+git config --global user.email "youknowit@gmail.com"
+git config --global core.editor vim // or whatever
+
+
+/* new repo */
+cd Desktop
+mkdir repos
+mkdir myproj
+touch fileA.txt
+git add fileA.txt
+git commit -m "added my first file, fileA"
+	(to remove staged files, git rm --cached fileA.txt) 
+
+mkdir dirA
+git touch dirA/fileA.txt, dirA/fileB.txt
+git add dirA 	#adds folder and files in folder
+git add . 		#adds all untracked or modified files
+
+echo "feature 1" > fileA.txt
+git status -s 	#shorthand status, shows green A and red M for added (above) and modified
+
+git commit -m "initial commit"
+git status #on branch master
+git log 
+git log --oneline -2 #shows 2 most recent commits
+
+/* bitbucket repos */
+-- uname similar to email, last pass has pwd
+by convention, remote repos end with .Git 	repoa.git
+bitbucket has access to multiple VCS (version control system(?))

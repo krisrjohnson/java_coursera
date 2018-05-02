@@ -1,0 +1,38 @@
+metadata <html> <head> <title> 
+	<style> or <link> for css
+sectioning <body> <h1> goes to <h6>, <div> for styling, <p> paragraph
+semantic <b>bold</b> <em>emphasis</em>
+<ul> unordered list 
+	<li> list item </li>
+	<ul>
+		<li>list inside a list</li>
+	</ul>
+</ul>
+<ol> ordered list </ol>
+<img src="website url" width="75%"/>
+<a href="website url">clickable text</a>
+<table>
+	<tr> table row 
+		<th> header element </th>
+		<td> data </td>
+	</tr>
+
+CSS notes:
+h1 {
+	text-align: center;
+	color: blue;
+} // changes all h1's to centered and blue
+
+.className {
+	color: green;
+} // everything in <div class="className"></div> will be green
+
+#cakeImg {
+	float:right;
+} // id="cakeImg" - only targets a single tag
+// combinators are more advanced ways
+
+rgb(red,green,blue) values
+rgb(#AA00EE) //rgb in hexadecimal form
+mozilla color picker: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
+w3 color picker: https://www.w3schools.com/colors/colors_picker.asp
